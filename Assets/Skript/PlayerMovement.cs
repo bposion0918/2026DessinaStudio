@@ -9,8 +9,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float minZ = -14f;
     public float maxZ = 14f;
 
+    private PlayerHealth playerHealth;
+
+    private void Start()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
     void Update()
     {
+        if (playerHealth != null && playerHealth.IsDead) return;
+        
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
